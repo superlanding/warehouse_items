@@ -22,7 +22,7 @@ class Warehouse::Random < Struct.new(:items, :qty)
     random_items = {}
     (1..qty).each do
       item = items.sample
-      random_items[item.code] = Warehouse::Item.new(item.code, item.title, 0, item.price)
+      random_items[item.code] ||= Warehouse::Item.new(item.code, item.title, 0, item.price)
       random_items[item.code].qty += 1
     end
     Warehouse::List.new(random_items.values)
