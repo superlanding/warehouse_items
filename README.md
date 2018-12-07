@@ -1,39 +1,36 @@
-# WarehouseItems
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/warehouse_items`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
+# Warehouse::Item
 
 ```ruby
-gem 'warehouse_items'
+@item1 = Warehouse::Item.new('迷黑', '迷黑', 3, 250)
 ```
 
-And then execute:
+# Warehouse::Random
 
-    $ bundle
+```ruby
+@item1 = Warehouse::Item.new('迷黑', '迷黑', nil, 250)
+@item2 = Warehouse::Item.new('迷黃', '迷黃', nil, 250)
+@item3 = Warehouse::Item.new('迷綠', '迷綠', nil, 250)
+@random_item = Warehouse::Random.new([@item1, @item2, @item3], 4)
+@list = @random_item.fetch! # (Warehouse::List)
+```
 
-Or install it yourself as:
+# Warehouse::List
 
-    $ gem install warehouse_items
+```ruby
+@item1 = Warehouse::Item.new('迷黑', '迷黑', 1, 250)
+@item2 = Warehouse::Item.new('迷黃', '迷黃', 1, 250)
+@item3 = Warehouse::Item.new('迷綠', '迷綠', 1, 250)
+@list = Warehouse::List.new([@item1, @item2, @item3])
 
-## Usage
+# 所有數量變兩倍 (會解壓縮 RandomItem)
+@list *= 2
 
-TODO: Write usage instructions here
+# 迷黑數量 + 1
+@list += @item1
 
-## Development
+# 解壓 random item (回傳都是已經隨機好的品項)
+@list = @random_item.items!
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/warehouse_items.
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+# 回傳 item
+@list.find('迷黑') 
+```
