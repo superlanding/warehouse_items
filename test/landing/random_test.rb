@@ -2,10 +2,10 @@ require "test_helper"
 
 describe "Warehouse::Random" do
   before do
-    @item1 = Warehouse::Item.new('迷黑', '迷黑', nil, 250)
-    @item2 = Warehouse::Item.new('迷黃', '迷黃', nil, 250)
-    @item3 = Warehouse::Item.new('迷綠', '迷綠', nil, 250)
-    @random_item = Warehouse::Random.new([@item1, @item2, @item3], 4)
+    @item1 = Warehouse::Item::Code.new('迷黑', '迷黑', nil, 250)
+    @item2 = Warehouse::Item::Code.new('迷黃', '迷黃', nil, 250)
+    @item3 = Warehouse::Item::Code.new('迷綠', '迷綠', nil, 250)
+    @random_item = Warehouse::Item::Random.new([@item1, @item2, @item3], 4)
     @list = @random_item.fetch!
   end
 

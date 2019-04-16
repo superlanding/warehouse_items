@@ -9,7 +9,7 @@ describe "Warehouse::List" do
   end
 
   should "#empty?" do
-    @list = Warehouse::List.new([Warehouse::Item.new])
+    @list = Warehouse::List.new([Warehouse::Item::Code.new])
     assert_equal false, @list.empty?
   end
 
@@ -20,8 +20,8 @@ describe "Warehouse::List" do
 
   context "*" do
     setup do
-      @item1 = Warehouse::Item.new("黑", "黑", 1)
-      @item2 = Warehouse::Item.new("白", "白", 1)
+      @item1 = Warehouse::Item::Code.new("黑", "黑", 1)
+      @item2 = Warehouse::Item::Code.new("白", "白", 1)
       @list = Warehouse::List.new([@item1, @item2])
       @new_list = @list * 2
     end
@@ -57,8 +57,8 @@ describe "Warehouse::List" do
 
   context "#find" do
     setup do
-      @item1 = Warehouse::Item.new("黑", "黑", 1)
-      @item2 = Warehouse::Item.new("白", "白", 1)
+      @item1 = Warehouse::Item::Code.new("黑", "黑", 1)
+      @item2 = Warehouse::Item::Code.new("白", "白", 1)
       @list = Warehouse::List.new([@item1, @item2])
     end
 
@@ -71,11 +71,11 @@ describe "Warehouse::List" do
     end
   end
 
-  context "+ Warehouse::Item" do
+  context "+ Warehouse::Item::Code" do
     setup do
       @list = Warehouse::List.new
-      @item1 = Warehouse::Item.new("黑", "黑", 1)
-      @item2 = Warehouse::Item.new("白", "白", 1)
+      @item1 = Warehouse::Item::Code.new("黑", "黑", 1)
+      @item2 = Warehouse::Item::Code.new("白", "白", 1)
       @new_list_1 = @list + @item1
       @new_list_2 = @new_list_1 + @item2
       @new_list_3 = @new_list_2 + @item2
@@ -117,11 +117,11 @@ describe "Warehouse::List" do
 
   context "+ Warehouse::List" do
     setup do
-      @item1 = Warehouse::Item.new("黑", "黑", 2)
-      @item2 = Warehouse::Item.new("白", "白", 3)
+      @item1 = Warehouse::Item::Code.new("黑", "黑", 2)
+      @item2 = Warehouse::Item::Code.new("白", "白", 3)
       @list1 = Warehouse::List.new([@item1, @item2])
-      @item3 = Warehouse::Item.new("黑", "黑", 4)
-      @item4 = Warehouse::Item.new("白", "白", 5)
+      @item3 = Warehouse::Item::Code.new("黑", "黑", 4)
+      @item4 = Warehouse::Item::Code.new("白", "白", 5)
       @list2 = Warehouse::List.new([@item3, @item4])
       @list3 = @list1 + @list2
     end
