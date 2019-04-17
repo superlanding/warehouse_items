@@ -1,26 +1,42 @@
 module Warehouse
   module Item
-    class Barcode < Base
-      def initialize(*)
-        super
-        self.code_type = :barcode
+    Barcode = Struct.new(:barcode, :title, :qty) do
+
+      def barcode?
+        true
       end
 
-      def barcode
-        code_or_barcode
+      def code?
+        false
       end
 
-      def code
-        raise NoMethodError, "use #barcode instead."
+      def type
+        'single'
+      end
+
+      def random?
+        false
+      end
+
+      def single?
+        true
       end
 
       def to_h
         {
-          'barcode' => code_or_barcode,
+          'barcode' => barcode,
           'title' => title,
           'qty' => qty
         }
       end
+
+      def deep_dup
+        self.class.new(barcode, title, qty)
+      end
+
+      # 給 form 用的
+      def persisted?; false end
+      def product; end
     end
   end
 end
