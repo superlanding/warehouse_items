@@ -1,6 +1,6 @@
 module Warehouse
   module Item
-    Code = Struct.new(:code, :title, :qty, :price) do
+    Code = Struct.new(:barcode, :code, :code_2, :title, :title_en, :qty, :price) do
 
       def barcode?
         false
@@ -24,14 +24,18 @@ module Warehouse
 
       def to_h
         {
+          'barcode' => barcode,
           'code' => code,
+          'code_2' => code_2,
           'title' => title,
-          'qty' => qty
+          'title_en' => title_en,
+          'qty' => qty,
+          'price' => price
         }
       end
 
       def deep_dup
-        self.class.new(code, title, qty, price)
+        self.class.new(barcode, code, code_2, title, title_en, qty, price)
       end
 
       # 給 form 用的
