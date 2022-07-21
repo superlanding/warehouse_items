@@ -2,6 +2,10 @@ module Warehouse
   module Item
     Code = Struct.new(:barcode, :code, :code_2, :title, :title_en, :qty, :price) do
 
+      def is_free?
+        price == 0
+      end
+
       def barcode?
         false
       end
