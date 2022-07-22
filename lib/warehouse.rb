@@ -8,5 +8,5 @@ require "warehouse/item/random"
 require "warehouse/list"
 
 module Warehouse
-  
+
 end
