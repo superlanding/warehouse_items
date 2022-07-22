@@ -14,6 +14,11 @@ describe "Xdelivery::Warehouse::List" do
         { "code" => '迷黑', 'title' => "迷黑", "qty" => 2 },
         { "barcode" => 'TC1234', 'title' => "TC1234", "qty" => 3 }
       ]
+      expected = [
+        { "code" => "迷黑", "title" => "迷黑", "qty" => 2, "price" => nil,
+          "barcode" => nil, "code_2" => nil, "title_en" => nil },
+        { "barcode" => "TC1234", "title" => "TC1234", "qty" => 3}
+      ]
       assert_equal(expected, @list.to_a)
     end
 
