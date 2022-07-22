@@ -28,18 +28,18 @@ module Warehouse
 
       def to_h
         {
-          'barcode' => barcode,
           'code' => code,
-          'code_2' => code_2,
           'title' => title,
-          'title_en' => title_en,
           'qty' => qty,
-          'price' => price
+          'price' => price,
+          'barcode' => barcode,
+          'code_2' => code_2,
+          'title_en' => title_en
         }
       end
 
       def deep_dup
-        self.class.new(barcode, code, code_2, title, title_en, qty, price)
+        self.class.new(code, title, qty, price, barcode, code_2, title_en)
       end
 
       # 給 form 用的
