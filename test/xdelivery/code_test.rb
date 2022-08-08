@@ -23,8 +23,9 @@ describe "Xdelivery::Warehouse::Item::CodeTest" do
       assert_nil(@item.product)
     end
 
-    should '#to_h = { "code" => "迷黑", "title" => "迷黑", "qty" => 2 }' do
-      expted = { "code" => "迷黑", "title" => "迷黑", "qty" => 2 }
+    should '#to_h = {"barcode"=>nil, "code"=>"迷黑", "code_2"=>nil, "title"=>"迷黑", "title_en"=>nil, "qty"=>2, "price"=>nil}' do
+      expted = { "barcode" => nil, "code" => "迷黑", "code_2" => nil, "title" => "迷黑",
+                 "title_en" => nil, "qty" => 2, "price" => nil }
       assert_equal expted, @item.to_h
     end
 
