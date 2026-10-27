@@ -11,6 +11,7 @@
 - 新增 `CHANGELOG.md`。
 - README 重寫：簡介、需求、安裝、用法（`Item::Code` / `Item::Barcode` / `Item::Random` / `List`）、開發與測試、發版流程。
 - CLAUDE.md 新增規則：每個 PR 都必須同步更新 `README.md` 與 `CHANGELOG.md`。
+- CLAUDE.md 新增語言規則：`README.md` 與 `CHANGELOG.md` 一律用繁體中文（zh-TW）撰寫，程式碼、識別字與指令維持英文。
 
 ## [1.0.1] - 2026-10-27
 
