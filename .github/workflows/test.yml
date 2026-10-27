@@ -1,0 +1,33 @@
+name: Tests
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - ruby: "3.3.12"
+            gemfile: gemfiles/rails_7.2.gemfile
+          - ruby: "3.3.12"
+            gemfile: gemfiles/rails_8.0.gemfile
+          - ruby: "3.4.11"
+            gemfile: gemfiles/rails_7.2.gemfile
+          - ruby: "3.4.11"
+            gemfile: gemfiles/rails_8.0.gemfile
+    env:
+      BUNDLE_GEMFILE: ${{ matrix.gemfile }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: Run tests
+        run: bundle exec rake t
